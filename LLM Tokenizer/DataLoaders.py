@@ -15,3 +15,18 @@ with open ("the-verdict.txt", "r", encoding= "utf-8") as f:
 enc_text = tokenizer.encode(raw_text)
 #Total Vocabulary
 print(len(enc_text))
+
+#Setting the context to be 4 token
+context_size = 4
+
+x = enc_text[:context_size]
+y = enc_text[1:context_size+1]
+
+print (f"x:  {x}")
+print (f"y:    {y}")
+
+#setting up prediction pairs
+for i in range(1, context_size+1):
+    context = enc_text[:i]
+    desired = enc_text[i]
+    print (context, "--->", desired)
