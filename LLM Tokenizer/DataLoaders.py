@@ -68,10 +68,10 @@ class GPTDatasetV1(Dataset):
         return self.input_ids[idx], self.target_ids[idx]
     
 
-def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=True, drop_last=True, num_workes=0)
+def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=True, drop_last=True, num_workes=0):
     
     #initialize the tokenizer
-    tokenizer = tokenizer.encode("gpt2")
+    tokenizer = tiktoken.get_encoding("gpt2")
 
     # Creating the dataset
     dataset = GPTDatasetV1(txt, tokenizer, max_length, stride)
@@ -86,3 +86,14 @@ def create_dataloader_v1(txt, batch_size=4, max_length=256, stride=128, shuffle=
     )
 
     return dataloader
+
+
+#Creating the input and output batches
+print("PyTorch version:", torch.__version__)
+dataloader = create_dataloader_v1(
+    raw_text, batch_size=1, max_length=4, stride=1, shuffle=False
+)
+
+data_iteration = iter(dataloader)
+first_batch = next(data_iteration)
+print(first_batch)
