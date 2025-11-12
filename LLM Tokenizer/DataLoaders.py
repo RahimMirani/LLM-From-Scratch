@@ -3,6 +3,7 @@
 import importlib
 import tiktoken
 from torch.utils.data import Dataset, DataLoader
+import torch
 
 #tiktoken library for tokens, used by initial gpt too
 
@@ -40,3 +41,20 @@ for i in range(1, context_size+1):
     desired = enc_text[i]
 
     print(tokenizer.decode(context), "---->", tokenizer.decode([desired]))
+
+
+#Class to create tensors using Pytorch
+class GPTDatasetV1(Dataset):
+    def __init__(self, txt, tokenizer, max_length, stride):
+        self.input_ids = []
+        self.target_ids = []
+
+        # Tokenize the entire text
+        token_ids = tokenizer.encode(txt, allowed_special={"<|endoftext|>"})
+
+        # Using the sliding widow to chunk the book into overlapping sequences of max_lenght and generate tensors from it
+        for i in range(0, len(token_ids) - max_length, stride):
+            input_chunk = token_ids[i:i + max_length]
+            target_chunk = token_ids[i + 1: i + max_length + 1]
+            self.input_ids.append(torch.tensor(input_chunk))
+            self.target_ids.append(torch.tensor(target_chunk))
