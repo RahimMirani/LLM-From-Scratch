@@ -96,4 +96,6 @@ dataloader = create_dataloader_v1(
 
 data_iteration = iter(dataloader)
 first_batch = next(data_iteration)
+second_batch = next(data_iteration)
 print(first_batch)
+print(second_batch)
