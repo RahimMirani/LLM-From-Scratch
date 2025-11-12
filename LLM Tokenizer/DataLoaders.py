@@ -25,8 +25,17 @@ y = enc_text[1:context_size+1]
 print (f"x:  {x}")
 print (f"y:    {y}")
 
+#Encoding
 #setting up prediction pairs
 for i in range(1, context_size+1):
     context = enc_text[:i]
     desired = enc_text[i]
     print (context, "--->", desired)
+
+
+#Decoding the pairs
+for i in range(1, context_size+1):
+    context = enc_text[:i]
+    desired = enc_text[i]
+
+    print(tokenizer.decode(context), "---->", tokenizer.decode([desired]))
