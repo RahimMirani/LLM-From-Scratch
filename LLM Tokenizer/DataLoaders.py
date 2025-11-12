@@ -2,6 +2,7 @@
 
 import importlib
 import tiktoken
+from torch.utils.data import Dataset, DataLoader
 
 #tiktoken library for tokens, used by initial gpt too
 
