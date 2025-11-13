@@ -6,4 +6,4 @@ The dataset used in the whole implementation and repo is from the book "The Verd
 2. Byte Pair encoding Algorithm
 
 Steps in generating token embeddings:
-Text --> broken down into sub words/characters --> converted into numbers (Token IDs) through tokenizer (these numbers are random and does not capture semantic meaning) --> Passed into a Nueral Netwrok --> Token embeddings vectors (these embeddings capture semetic meaning between words)
+Text --> broken down into sub words/characters --> converted into numbers (Token IDs) through tokenizer (these numbers are random and does not capture semantic meaning) --> Passed into a Nueral Netwrok --> Token embeddings vectors (these embeddings capture semetic meaning between words) --> Positional embeddings are generated and added to the token embeddings to capture the position of where the word appear, makes the llm more context aware ---> Data/Tokens fed into the LLM
