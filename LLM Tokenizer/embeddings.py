@@ -4,6 +4,9 @@
 import torch
 from dataLoaders import create_dataloader_v1
 
+with open ("the-verdict.txt", "r", encoding= "utf-8") as f:
+    raw_text = f.read()
+
 # Creating Token Embeddings
 
 input_ids = torch.tensor([2,3,5,1])
@@ -27,7 +30,15 @@ output_dimension= 256
 max_length = 4
 
 token_embedding_layer = torch.nn.Embedding(vocab_size,output_dimension)
-dataloader = create_dataloader_v1()
+dataloader = create_dataloader_v1(
+    raw_text, batch_size= 8, max_length= max_length, stride=max_length, shuffle=False
+)
 
+data_iter = iter(dataloader)
+input, targets = next(data_iter)
+
+#Converts this into 8x4x256 dimentional vector
+token_embedding = token_embedding_layer(input)
+print(token_embedding.shape)
 
 
