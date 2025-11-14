@@ -45,6 +45,9 @@ print(token_embedding.shape)
 #Creating positional embeddings
 context_length = max_length
 pos_embeddings_layer = torch.nn.Embedding(context_length, output_dimension)
-pos_embeddings = pos_embeddings_layer(torch.arage(max_length))
+pos_embeddings = pos_embeddings_layer(torch.arange(max_length))
 print(pos_embeddings.shape)
 
+# Adding position embeddings to token embeddings
+input_embeddings = token_embedding + pos_embeddings
+print(input_embeddings.shape) #The shape remains the same but the values are added up inside the tensors
