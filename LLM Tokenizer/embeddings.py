@@ -4,8 +4,6 @@
 import torch
 from dataLoaders import create_dataloader_v1
 
-with open ("the-verdict.txt", "r", encoding= "utf-8") as f:
-    raw_text = f.read()
 
 # Creating Token Embeddings
 
@@ -24,7 +22,10 @@ print(embedding_layer(input_ids))
 
 
 
-# Creating Positional embeddings
+# Creating the token embeddings and Positional embeddings for the orignal dataset
+with open ("the-verdict.txt", "r", encoding= "utf-8") as f:
+    raw_text = f.read()
+
 vocab_size = 50257
 output_dimension= 256
 max_length = 4
@@ -41,4 +42,9 @@ input, targets = next(data_iter)
 token_embedding = token_embedding_layer(input)
 print(token_embedding.shape)
 
+#Creating positional embeddings
+context_length = max_length
+pos_embeddings_layer = torch.nn.Embedding(context_length, output_dimension)
+pos_embeddings = pos_embeddings_layer(torch.arage(max_length))
+print(pos_embeddings.shape)
 
