@@ -1,7 +1,9 @@
 # Building an LLM from Scratch
 The dataset used in the whole implementation and repo is from the book "The Verdict." Its a toy dataset and it would scale the same way for larger datasets too. 
 
-## LLM Tokenizer
+## Data Preprocessing Pipeline for LLM
+Tokenization (Word based, Character based, Subword) --> Token Embeddings --> Positional Embeddings --> Input Embeddings(Token + Positional Embeddings)
+
 1. Simple Tokenizer
 2. Byte Pair encoding Algorithm
 
