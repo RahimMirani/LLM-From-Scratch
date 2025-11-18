@@ -1,2 +1,3 @@
 # Venv Environment
 venv/
+__pycache__/
