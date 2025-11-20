@@ -15,3 +15,10 @@ File descriptions inside `data-preprocessing-pipeline`
 3. `dataLoaders.py` — Reads `the-verdict.txt`, tokenizes the text with `tiktoken`, and constructs input-target pairs suitable for next-token prediction. Provides `GPTDatasetV1`, a PyTorch `Dataset` that chunks the token stream with a sliding window, and `create_dataloader_v1`, a helper that returns a `DataLoader`. The file also prints example batches to demonstrate the batching behavior.
 
 4. `embeddings.py` — Demonstrates creating token embedding and positional embedding layers in PyTorch, using a small `vocab_size` and `output_dimension` for illustration. It shows how to look up token embeddings, build positional embeddings, and combine them (token + positional) to form input embeddings. This file uses `create_dataloader_v1` to obtain a batch and convert token IDs into dense vectors.
+
+
+## Attention Mechanism
+1. Simplified Attention Mechanism
+2. Self Attention Mechanism
+3. Casual Self Attention Mechanism
+4. Multi Head Attention Mechanism
