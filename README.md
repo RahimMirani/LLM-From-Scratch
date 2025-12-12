@@ -2,7 +2,7 @@
 The dataset used in the whole implementation and repo is from the book "The Verdict." Its a toy dataset and it would scale the same way for larger datasets too. 
 
 ## Data Preprocessing Pipeline for LLM
-Input Text (Data) --> Tokenization (Word based, Character based, Subword) --> Token Embeddings --> Positional Embeddings --> Input Embeddings(Token + Positional Embeddings)
+Input Text (Data) --> Tokenization (Word based, Character based, Subword) --> Token Embeddings --> Positional Embeddings --> Input Embeddings(Token Embeddings + Positional Embeddings)
 
 Steps in generating token embeddings:
 Text --> broken down into sub words/characters --> converted into numbers (Token IDs) through tokenizer (these numbers are random and does not capture semantic meaning) --> Passed into a Nueral Netwrok --> Token embeddings vectors (these embeddings capture semetic meaning between words) --> Positional embeddings are generated and added to the token embeddings to capture the position of where the word appear, makes the llm more context aware ---> Data/Tokens fed into the LLM
@@ -18,6 +18,8 @@ File descriptions inside `data-preprocessing-pipeline`
 
 
 ## Attention Mechanism
+Input Embeddings(Final Embeddings generated above) --> Passed to `Attention Mechanism` --> Contextual Embeddings
+
 1. Simplified Attention Mechanism
 2. Self Attention Mechanism
 3. Casual Self Attention Mechanism
