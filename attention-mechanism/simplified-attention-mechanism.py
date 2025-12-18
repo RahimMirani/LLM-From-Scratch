@@ -38,4 +38,10 @@ attn_weights_2_naive = softmax_naive(attn_scores_2)
 print("Attention weights:", attn_weights_2_naive)
 print("Sum:", attn_weights_2_naive.sum())
 
+#Using the PyTorch implementation of softmax, which has been extensively optimized for performance. Most used approach
+attn_weights_2 = torch.softmax(attn_scores_2, dim=0)
+print("Attention weights:", attn_weights_2)
+print("Sum:", attn_weights_2.sum())
+
+
 
