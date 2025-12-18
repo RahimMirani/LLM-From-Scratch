@@ -58,3 +58,11 @@ print(attn_scores)
 #As for-loops are generally slow, and we can achieve the same results using matrix multiplication (Fast approach)
 attn_scores = inputs @ inputs.T
 print(attn_scores)
+
+#converting attention scores to attention weights. normalizing each row to get value of each row to be a sum of 1
+attn_weights = torch.softmax(attn_scores, dim=-1)
+print(attn_weights)
+
+#using attention weights to compute all context vectors via matrix multiplication
+all_context_vecs = attn_weights @ inputs
+print(all_context_vecs)
