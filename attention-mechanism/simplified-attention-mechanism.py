@@ -54,3 +54,7 @@ for i, x_i in enumerate(inputs):
         attn_scores[i, j] = torch.dot(x_i, x_j)
 
 print(attn_scores)
+
+#As for-loops are generally slow, and we can achieve the same results using matrix multiplication (Fast approach)
+attn_scores = inputs @ inputs.T
+print(attn_scores)
