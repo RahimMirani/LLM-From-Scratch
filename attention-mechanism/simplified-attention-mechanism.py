@@ -28,7 +28,8 @@ attn_weights_2_tmp = attn_scores_2 / attn_scores_2.sum()
 print("Attention weights:", attn_weights_2_tmp)
 print("Sum:", attn_weights_2_tmp.sum())
 
-#Using softmax for normalization, most common approach
+#Using softmax naive for normalization, not using Pytorch softmax but our own implementation of softmax. 
+#Note that this naive softmax implementation (softmax_naive) may encounter numerical instability problems, such as overflow and underflow, when dealing with large or small input values.
 def softmax_naive(x):
     return torch.exp(x) / torch.exp(x).sum(dim=0)
 
@@ -36,3 +37,5 @@ attn_weights_2_naive = softmax_naive(attn_scores_2)
 
 print("Attention weights:", attn_weights_2_naive)
 print("Sum:", attn_weights_2_naive.sum())
+
+
