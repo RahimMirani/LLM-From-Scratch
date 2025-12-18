@@ -44,4 +44,13 @@ print("Attention weights:", attn_weights_2)
 print("Sum:", attn_weights_2.sum())
 
 
+# Calculation of attention weights and context vectors for all inputs.
 
+#adding an additional for-loop to compute the dot products for all pairs of inputs (Very slow approach)
+attn_scores = torch.empty(6, 6)
+
+for i, x_i in enumerate(inputs):
+    for j, x_j in enumerate(inputs):
+        attn_scores[i, j] = torch.dot(x_i, x_j)
+
+print(attn_scores)
